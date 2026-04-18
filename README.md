@@ -6,7 +6,7 @@ Customized deployment configuration for running OpenClaw on Render.
 
 Click to deploy:
 
-[![Deploy to Render](https://render.com/images/deploy_to_render.svg)](https://render.com/deploy?repo=https://github.com/openclaw/openclaw)
+[![Deploy to Render](https://render.com/images/deploy_to_render.svg)](https://render.com/deploy?repo=https://github.com/Heetisk/openclaw-render)
 
 ## Fix for "No Open Ports Found" Error
 
