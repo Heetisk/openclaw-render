@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: openclaw
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: OPENCLAW_GATEWAY_PORT
+        value: "18789"
+      - key: OPENCLAW_STATE_DIR
+        value: /tmp/.openclaw
+      - key: OPENCLAW_WORKSPACE_DIR
+        value: /tmp/workspace
+      - key: OPENCLAW_GATEWAY_TOKEN
+        generateValue: true
+      - key: OPENCLAW_GATEWAY_BIND
+        value: "0.0.0.0"
