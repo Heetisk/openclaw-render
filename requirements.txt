@@ -1,3 +1,4 @@
-# OpenClaw dependencies
-openclaw>=0.1.0
-# Add any other dependencies you need
+# OpenClaw dependencies for Render deployment
+# Using Node.js with npm
+# OpenClaw CLI is installed via npm in the Dockerfile
+# No additional Python dependencies needed for this setup
