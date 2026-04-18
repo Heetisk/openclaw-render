@@ -16,7 +16,6 @@ RUN mkdir -p $PNPM_HOME && chmod 755 $PNPM_HOME
 RUN git clone https://github.com/openclaw/openclaw.git /opt/openclaw && \
     cd /opt/openclaw && \
     pnpm install --frozen-lockfile && \
-    pnpm ui:build && \
     pnpm build && \
     pnpm link --global
 
