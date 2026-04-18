@@ -35,5 +35,5 @@ ENV OPENCLAW_GATEWAY_PORT=18789
 # Expose the gateway port
 EXPOSE 18789
 
-# Run the gateway with explicit port binding
-CMD ["openclaw", "gateway", "--port", "18789", "--bind", "0.0.0.0", "--allow-unconfigured"]
+# Run the gateway with explicit port binding (using "lan" for all interfaces)
+CMD ["openclaw", "gateway", "--port", "18789", "--bind", "lan", "--allow-unconfigured"]
