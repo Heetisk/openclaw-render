@@ -16,6 +16,7 @@ RUN mkdir -p $PNPM_HOME && chmod 755 $PNPM_HOME
 RUN git clone https://github.com/openclaw/openclaw.git /opt/openclaw && \
     cd /opt/openclaw && \
     pnpm install --frozen-lockfile && \
+    pnpm ui:build && \
     pnpm build && \
     pnpm link --global
 
@@ -34,5 +35,5 @@ ENV OPENCLAW_GATEWAY_PORT=18789
 # Expose the gateway port
 EXPOSE 18789
 
-# Run the gateway with allow-unconfigured for initial setup
-CMD ["openclaw", "gateway", "--allow-unconfigured"]
+# Run the gateway with explicit port binding
+CMD ["openclaw", "gateway", "--port", "18789", "--bind", "0.0.0.0", "--allow-unconfigured"]
