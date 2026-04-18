@@ -7,12 +7,17 @@ RUN apt-get update && apt-get install -y git ca-certificates && rm -rf /var/lib/
 # Install pnpm (OpenClaw uses pnpm)
 RUN npm install -g pnpm
 
+# Set up pnpm global bin directory
+ENV PNPM_HOME=/usr/local/share/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+RUN mkdir -p $PNPM_HOME && chmod 755 $PNPM_HOME
+
 # Clone and build OpenClaw from source
 RUN git clone https://github.com/openclaw/openclaw.git /opt/openclaw && \
     cd /opt/openclaw && \
     pnpm install --frozen-lockfile && \
     pnpm build && \
-    pnpm link
+    pnpm link --global
 
 # Create a non-root user for security
 RUN useradd -m appuser
