@@ -1,8 +1,18 @@
-# Use Node.js slim image
+# Use Node.js image
 FROM node:24-slim
 
-# Install OpenClaw CLI globally
-RUN npm install -g openclaw
+# Install git and build tools
+RUN apt-get update && apt-get install -y git ca-certificates && rm -rf /var/lib/apt/lists/*
+
+# Install pnpm (OpenClaw uses pnpm)
+RUN npm install -g pnpm
+
+# Clone and build OpenClaw from source
+RUN git clone https://github.com/openclaw/openclaw.git /opt/openclaw && \
+    cd /opt/openclaw && \
+    pnpm install --frozen-lockfile && \
+    pnpm build && \
+    pnpm link
 
 # Create a non-root user for security
 RUN useradd -m appuser
